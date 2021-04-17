@@ -6,7 +6,8 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}	
-
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-content">
@@ -41,31 +42,15 @@
                                 <hr>
                                 <div class="row">
                 <div class="col-md-8">
-                    <form>       <!--
-                        <div class="form-group">
-                            <label>Text</label>
-                            <input type="text" class="form-control" placeholder="Text">
-                        </div>
-                 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>-->
+                        <form >
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Write here the song's lyrics </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            <textarea class="form-control" id="lyrics"  type="text" name="lyrics" rows="5"></textarea>
                         </div>
 
-                        <button type="submit" class="btn  btn-primary">Submit</button>
+                        <button type="button" onclick="$('#lyrics').submit(sendForm())" value="Submit" class="btn  btn-primary">Submit</button>
 
                     </form>
-
                 </div>
                 </div>
                 <br>
@@ -147,14 +132,52 @@
     </div>
     <!-- [ Main Content ] end -->
 
+
+<script>
+
+    function sendForm()
+    {
+      
+
+         var lyrics = document.getElementById("lyrics");
+
+         var lyrics_value = lyrics.value;
+
+        console.log(lyrics_value)
+         console.log("URL:")
+         console.log("get/ajax/emotion/"+lyrics_value)
+    
+
+         $.ajax({
+           type: 'GET',
+           url: "get/ajax/emotion/"+lyrics_value,
+           data: "",
+           success: function (response) {
+
+    
+                console.log("OK")
+
+                console.log(response["err"])
+
+
+           },
+           error: function (response) {
+             // alert the error if any error occured
+
+
+
+
+
+
+           }
+         })
+       
+        
+    }
+</script>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-
-    <!-- Apex Chart -->
-    <script src="/static/assets/js/plugins/apexcharts.min.js"></script>
-    <!-- custom-chart js -->
-    <script src="/static/assets/js/pages/dashboard-main.js"></script>
 
 {% endblock javascripts %}

@@ -10,8 +10,10 @@ urlpatterns = [
 
     # The home page
     path('', views.index, name='home'),
-
     # Matches any html file
+
     re_path(r'^.*\.*', views.pages, name='pages'),
+    path('get/ajax/emotion/<str:lyrics>', views.get_emotion, name='get_emotion')
+
 
 ]

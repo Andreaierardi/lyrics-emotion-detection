@@ -8,7 +8,20 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
+from django.http import JsonResponse
+from django.http import StreamingHttpResponse
+import pickle
 
+cv_logistic = pickle.load(open('model_pickles/logisticCV.sav', 'rb'))
+
+print(cv_logistic)
+
+def get_emotion(request, lyrics):
+    print(lyrics)
+    print("=======\nOK\n=======")
+    err = "YES"
+    return JsonResponse({"errors": err})
+ 
 #@login_required(login_url="/login/")
 def index(request):
     
@@ -40,3 +53,4 @@ def pages(request):
     
         html_template = loader.get_template( 'page-500.html' )
         return HttpResponse(html_template.render(context, request))
+
