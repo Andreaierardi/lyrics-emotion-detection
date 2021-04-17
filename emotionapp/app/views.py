@@ -12,7 +12,6 @@ from django import template
 #@login_required(login_url="/login/")
 def index(request):
     
-    
     context = {}
     context['segment'] = 'index'
 
