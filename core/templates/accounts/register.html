@@ -1,103 +1,109 @@
-{% extends "layouts/base-fullscreen.html" %}
+{% extends "layouts/base.html" %}
 
-{% block title %} Register {% endblock %}
+{% block title %} Login {% endblock %} 
 
-{% block content %} 
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
-	<!-- [ auth-signup ] start -->
-	<div class="auth-wrapper">
-		<div class="auth-content">
-			<div class="card">
-				<div class="row align-items-center text-center">
-					<div class="col-md-12">
-						<div class="card-body">
-							<img src="/static/assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
-							<h4 class="mb-3 f-w-400">
-								<h4 class="mb-3 f-w-400">
-									Sign UP
-								</h4>
-							</h4>
-							<span class="mb-0 text-muted">
-								{% if msg %}
-									{{ msg | safe }}
-								{% else %}
-									Add your credentials
-								{% endif %} 
-							</span>
-							<!-- dummy spacer -->
-							<p> <br /> </p>		
-							
-							<!-- Hide the form on success -->
-							{% if not success %}
-								<form role="form" method="post" action="">
+{% block content %}
 
-									{% csrf_token %}  
-															
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="feather icon-user"></i></span>
-										</div>
-										{{ form.username }}
-									</div>
-									<span class="text-error">{{ form.username.errors }}</span>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">
+            Create Account
+          </h4>
+        </div>
+        <div class="card-body">
 
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="feather icon-mail"></i></span>
-										</div>
-										{{ form.email }}
-									</div>
-									<span class="text-error">{{ form.email.errors }}</span>
+          <h6 class="card-category">
+              {% if msg %}
+                <span class="text-danger">{{ msg | safe }}</span>
+              {% else %}
+                Add your credentials
+              {% endif %}  
+          </h6>
+          
+          <br />
 
-									<div class="input-group mb-4">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="feather icon-lock"></i></span>
-										</div>
-										{{ form.password1 }}
-									</div>
-									<span class="text-error">{{ form.password1.errors }}</span>
+          {% if success %}
 
-									<div class="input-group mb-4">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="feather icon-lock"></i></span>
-										</div>
-										{{ form.password2 }}
-									</div>
-									<span class="text-error">{{ form.password2.errors }}</span>
-									
-									<div class="form-group text-left mt-2">
-										<div class="checkbox checkbox-primary d-inline">
-											<input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2" checked="">
-											<label for="checkbox-fill-2" class="cr">I agree with <a href="#">terms</a>.</label>
-										</div>
-									</div>
-									<button type="submit" name="register" class="btn btn-primary btn-block mb-4">Sign up</button>
-								
-								</form>
+            <p class="">
+              Please <a href="{% url 'login' %}" class="text-black text-small">authenticate</a> using the new account.
+            </p>  
 
-								<p class="mb-0 text-muted">Have an account? <a href="{% url 'login' %}" class="f-w-400">Login</a></p>
-							{% endif %}
+          {% else %}
+            <form role="form" method="post" action="">
+                
+              {% csrf_token %} 
 
-							<p class="mb-2 text-muted">
-								<br />
-								&copy; <a target="_blank" rel="noopener" href="https://bit.ly/37fF9RT" class="f-w-400">CodedThemes</a>
-								- <a target="_blank" rel="noopener" 
-								     href="https://appseed.us/admin-dashboards/django-dashboard-gradientable" class="f-w-400">Django Gradient</a>
-							</p>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Username</label>
+                    {{ form.username }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-danger">{{ form.username.errors }}</span>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- [ auth-signup ] end -->
+              <br />
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Email</label>
+                    {{ form.email }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-danger">{{ form.email.errors }}</span>
+
+              <br />
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Password</label>
+                    {{ form.password1 }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-danger">{{ form.password1.errors }}</span>
+
+              <br />
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Password Check</label>
+                    {{ form.password2 }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-danger">{{ form.password2.errors }}</span>
+
+              <br />
+
+              <button type="submit" name="register" class="btn btn-primary pull-left">Register</button>
+
+              &nbsp; &nbsp; 
+              <span class="pull-right">
+                Have an account? <a href="{% url 'login' %}" class="text-primary">Login</a>
+              </span>
+
+              <div class="clearfix"></div>
+
+            </form>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
-
-	<script src="/static/assets/js/waves.min.js"></script>
-
-{% endblock javascripts %} 
+{% block javascripts %}{% endblock javascripts %}

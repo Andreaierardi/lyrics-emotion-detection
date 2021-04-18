@@ -1,163 +1,119 @@
 {% extends "layouts/base.html" %}
 
-{% block title %}   Lyrics Emotion Detection App {% endblock %} 
+{% block title %} Dashboard {% endblock %} 
 
-<!-- Specific CSS goes HERE -->
+<!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
-{% block content %}	
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- [ Main Content ] start -->
-<div class="pcoded-main-container">
-    <div class="pcoded-content">
-            <!-- [ breadcrumb ] start -->
-            <!-- <div class="page-header">
-                <div class="page-block">
-                    <div class="row align-items-center">
-                        <div class="col-md-12">
-                            <div class="page-header-title">
-                                <h5 class="m-b-10">Dashboard Analytics</h5>
-                            </div>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- [ breadcrumb ] end -->
-            <!-- [ Main Content ] start -->
-
-    <div class="row">
-                    <!-- [ form-element ] start -->
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2> Lyrics Emotion Detection App </h2>
-                            </div>
-                            <div class="card-body">
-                                <h5>Write here the lyrics</h5>
-                                <hr>
-                                <div class="row">
-                <div class="col-md-8">
-                        <form >
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Write here the song's lyrics </label>
-                            <textarea class="form-control" id="lyrics"  type="text" name="lyrics" rows="5"></textarea>
-                        </div>
-
-                        <button type="button" onclick="$('#lyrics').submit(sendForm())" value="Submit" class="btn  btn-primary">Submit</button>
-
-                    </form>
-                </div>
-                </div>
-                <br>
-                <hr>
-                <br>
-                    <div class="row">
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card bg-c-green order-card">
-                            <div class="card-body">
-                                <h6 class="text-white">Total Sales</h6>
-                                <h2 class="text-right text-white"><i class="feather icon-tag float-left"></i><span>1641</span></h2>
-                                <p class="m-b-0">This Month<span class="float-right">213</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card bg-c-yellow order-card">
-                            <div class="card-body">
-                                <h6 class="text-white">Revenue</h6>
-                                <h2 class="text-right text-white"><i class="feather icon-repeat float-left"></i><span>$42,562</span></h2>
-                                <p class="m-b-0">This Month<span class="float-right">$5,032</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card bg-c-red order-card">
-                            <div class="card-body">
-                                <h6 class="text-white">Total Profit</h6>
-                                <h2 class="text-right text-white"><i class="feather icon-award float-left"></i><span>$9,562</span></h2>
-                                <p class="m-b-0">This Month<span class="float-right">$542</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card bg-c-red order-card">
-                            <div class="card-body">
-                                <h6 class="text-white">Total Profit</h6>
-                                <h2 class="text-right text-white"><i class="feather icon-award float-left"></i><span>$9,562</span></h2>
-                                <p class="m-b-0">This Month<span class="float-right">$542</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-lg-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fa fa-envelope-open text-c-blue d-block f-40"></i>
-                                <h4 class="m-t-20"><span class="text-c-blue">8.62k</span> Subscribers</h4>
-                                <p class="m-b-20">Your main list is growing</p>
-                                <button class="btn btn-primary btn-sm btn-round">Manage List</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fab fa-twitter text-c-green d-block f-40"></i>
-                                <h4 class="m-t-20"><span class="text-c-blgreenue">+40</span> Followers</h4>
-                                <p class="m-b-20">Your main list is growing</p>
-                                <button class="btn btn-success btn-sm btn-round">Check them out</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{% block content %}
+   
 
 
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Lyrics Emotion Detection </h4>
+                <p class="card-category"></p>
+              </div>
+              <div class="card-body">
+                <div id="typography">
+                  <div class="card-title">
+                    <h2>Lyrics Emotion Detection</h2>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+
+                        <form id="emotion-form"   class="forms-sample">
+              
+              
+                              <div class="form-group">
+                                <label class="bmd-label-floating"> Write here the lyrics' song</label>
+                                <textarea class="form-control" id="lyrics" rows="5"></textarea>
+                              </div>
+                              <a  class="btn btn-primary btn-round" onclick='$("#emotion-form").submit(update_suggestions())'  style="color:white">Get the emotion</a>
+              
+              
+                        <form>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+                  </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
+ 
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+ <script>
 
 
-        
-            <!-- [ Main Content ] end -->
-        </div>
-    </div>
-    <!-- [ Main Content ] end -->
 
 
-<script>
 
-    function sendForm()
-    {
-      
 
-         var lyrics = document.getElementById("lyrics");
 
+
+        function activate(elem) {
+          var x = document.getElementById(elem);
+          x.disabled = false
+
+        }
+
+        function disable(elem) {
+          var x = document.getElementById(elem);
+          x.disabled = true
+
+
+        }
+
+        function hide(elem) {
+          var x = document.getElementById(elem);
+          x.style.display = "none";
+        }
+
+        function show(elem) {
+          var x = document.getElementById(elem);
+          x.style.display = "block";
+        }
+
+        function update_suggestions()
+        {
+
+         var lyrics = document.getElementById('lyrics')
          var lyrics_value = lyrics.value;
 
-        console.log(lyrics_value)
+
          console.log("URL:")
-         console.log("get/ajax/emotion/"+lyrics_value)
-    
+         console.log("get/ajax/get_emotion/"+lyrics_value)
 
          $.ajax({
            type: 'GET',
-           url: "get/ajax/emotion/"+lyrics_value,
+           // get/ajax/fore-bench/ 'code=' + code + '&userid=' + userid
+           url: "get/ajax/get_emotion/"+lyrics_value,
            data: "",
            success: function (response) {
 
-    
-                console.log("OK")
+             console.log("ENTER RESPONSE")
+             _err = response["errors"]
+             console.log("ACK: "+_err)
+             if(_err=="no")
+             {
 
-                console.log(response["err"])
+
+               console.log("OK")
+
+             }
+
+             else {
+                  console.log(":(((")
+
+
+             }
+
+
 
 
            },
@@ -171,13 +127,15 @@
 
            }
          })
-       
+       }
         
-    }
-</script>
-{% endblock content %}
+       
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+  </script>
 
 {% endblock javascripts %}

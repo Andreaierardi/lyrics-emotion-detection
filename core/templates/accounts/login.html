@@ -1,76 +1,74 @@
-{% extends "layouts/base-fullscreen.html" %}
+{% extends "layouts/base.html" %}
 
-{% block title %} Login {% endblock %}
+{% block title %} Login {% endblock %} 
 
-{% block content %} 
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
-	<!-- [ auth-signin ] start -->
-	<div class="auth-wrapper">
-		<div class="auth-content">
-			<div class="card">
-				<div class="row align-items-center text-center">
-					<div class="col-md-12">
-						<div class="card-body">
+{% block content %}
 
-							<img src="/static/assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
-							<h4 class="mb-3 f-w-400">
-								Sign IN
-							</h4>
-							<span class="mb-0 text-muted">
-								{% if msg %}
-									{{ msg | safe }}
-								{% else %}
-									Add your credentials
-								{% endif %} 
-							</span>
-							<!-- dummy spacer -->
-							<p> <br /> </p>						
-							<form role="form" method="post" action="">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">
+            Login
+          </h4>
+        </div>
+        <div class="card-body">
 
-								{% csrf_token %} 
-								
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="feather icon-user"></i></span>
-									</div>
-									{{ form.username }}
-								</div>
-								<div class="input-group mb-4">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="feather icon-lock"></i></span>
-									</div>
-									{{ form.password }}
-								</div>
-								<div class="form-group text-left mt-2">
-									<div class="checkbox checkbox-primary d-inline">
-										<input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-										<label for="checkbox-fill-a1" class="cr"> Save credentials</label>
-									</div>
-								</div>
-								<button type="submit" name="login" class="btn btn-block btn-primary mb-4">Signin</button>
-							
-							</form>
+          <h6 class="card-category">
+              {% if msg %}
+                <span class="text-danger">{{ msg | safe }}</span>
+              {% else %}
+                  Add your credentials
+              {% endif %}  
+          </h6>
+          
+          <br />
 
-							<p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'register' %}" class="f-w-400">Signup</a></p>
-							<p class="mb-2 text-muted">
-								<br />
-								&copy; <a target="_blank" rel="noopener" href="https://bit.ly/37fF9RT" class="f-w-400">CodedThemes</a>
-								- <a target="_blank" rel="noopener" 
-								     href="https://appseed.us/admin-dashboards/django-dashboard-gradientable" class="f-w-400">Django Gradient</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- [ auth-signin ] end -->
+          <form role="form" method="post" action="">
+              
+            {% csrf_token %} 
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Username</label>
+                  {{ form.username }}
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Password</label>
+                  {{ form.password }}
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <button type="submit" name="login" class="btn btn-primary pull-left">Login</button>
+
+            &nbsp; &nbsp; 
+            <span class="pull-right">
+              Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a>
+            </span>
+
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
-
-	<script src="/static/assets/js/waves.min.js"></script>
-
-{% endblock javascripts %} 
+{% block javascripts %}{% endblock javascripts %}
