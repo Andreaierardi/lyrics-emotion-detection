@@ -11,4 +11,6 @@ gunicorn
 whitenoise
 sklearn
 joblib
+pandas
+numpy
 nltk
