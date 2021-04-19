@@ -20,20 +20,22 @@
                     <h2>Lyrics Emotion Detection</h2>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
 
                         <form id="emotion-form"   class="forms-sample">
               
               
                               <div class="form-group">
                                 <label class="bmd-label-floating"> Write here the lyrics' song</label>
-                                <textarea class="form-control" id="lyrics" rows="5"></textarea>
+                                <textarea class="form-control" id="lyrics" rows="15"></textarea>
                               </div>
                               <a  class="btn btn-primary btn-round" onclick='$("#emotion-form").submit(update_suggestions())'  style="color:white">Get the emotion</a>
               
               
                         <form>
-                        </div>
+                      </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6" id="results">
+                      </div>  
 
                     </div>
 
@@ -46,9 +48,7 @@
 
           
 
-            <div class="row" id="results">
-              
-              </div>  <!--
+            <!--
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                   <div class="card-header card-header-success card-header-icon">
@@ -537,7 +537,7 @@ Sick*/
                 class_emo = 'danger'
 
                }
-               part.innerHTML = ' <div class="col-lg-3 col-md-6 col-sm-6"> \
+               part.innerHTML = ' \
                 <div class="card card-stats"> \
                   <div class="card-header card-header-'+class_emo+ ' card-header-icon"> \
                     <div class="card-icon"> \
@@ -549,8 +549,7 @@ Sick*/
                     <div class="stats"> \
                     </div> \
                   </div> \
-                </div> \
-              </div> '
+                </div> '
              }
 
              else {
