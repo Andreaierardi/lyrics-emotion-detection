@@ -139,16 +139,16 @@ def get_emotion(request, lyrics):
 
         if lyrics is not None:
             print(lyrics)
-            transformed_lyrics = pipe_bi.transform(pd.DataFrame.from_dict({"text":lyrics}))
+            transformed_lyrics = pipe_bi.transform(pd.DataFrame.from_dict({"text":[lyrics]}))
 
             print(transformed_lyrics)
-            y_pred = cv_logistic.pred(transformed_lyrics)
+            y_pred = cv_logistic.predict(transformed_lyrics)
 
             err = "no"
             print(lyrics)
-
-            print("Emotion predicted:",y_pred)
-            context = { "errors":err,"emotion": y_pred}
+            emotion = str(encoder.inverse_transform(y_pred)[0])
+            print("Emotion predicted:",emotion)
+            context = { "errors":err,"emotion": emotion}
             return JsonResponse(context)
         else:
             return JsonResponse({'errors':"error"})
