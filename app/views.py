@@ -122,6 +122,11 @@ pipe_bi = Pipeline([("extract", FeatureUnion([("terms", Pipeline([('clean', Clea
                  ("scale", StandardScaler(with_mean = False))])
 
 
+#import tensorflow
+
+cv_RF = pickle.load(open('model_pickles/RandomForestCV.sav', 'rb'))
+cv_MLP= pickle.load(open('model_pickles/MLP.sav', 'rb'))
+#cv_NN= load_model('model_pickles/NN_cv.sav')
 
 cv_logistic = pickle.load(open('model_pickles/logisticCV.sav', 'rb'))
 encoder = preprocessing.LabelEncoder()
