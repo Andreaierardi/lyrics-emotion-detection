@@ -14,4 +14,4 @@ joblib
 pandas
 numpy
 nltk
-tensorflow
+keras
