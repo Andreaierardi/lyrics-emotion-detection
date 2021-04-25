@@ -20,7 +20,7 @@
                     <h2>Lyrics Emotion Detection</h2>
                   </div>
                   <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
 
                         <form id="emotion-form"   class="forms-sample">
               
@@ -34,9 +34,19 @@
               
                         <form>
                       </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6" id="results">
+                    <div class="col-lg-5 col-md-6">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" id="results_lg">
                       </div>  
 
+                        <div class="col-lg-12 col-md-12 col-sm-12" id="results_rf">
+
+                      </div>  
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" id="results_mlp">
+                      </div>  
+
+                    </div>
                     </div>
 
 
@@ -501,55 +511,101 @@
              if(_err=="no")
              {
 
-               _emotion = response["emotion"]
-               console.log(_emotion)
+               _emotion_lg = response["emotion_lg"]
+               console.log(_emotion_lg)
+               _emotion_rf = response["emotion_rf"]
+               console.log(_emotion_rf)
+               _emotion_mlp = response["emotion_mlp"]
+               console.log(_emotion_mlp)
 
                console.log("OK")
-               part = document.getElementById('results')
 
-      /*         
-                        <!-- Sentiment Satisfied Alt  
-                          Mood Bad
-Sentiment Very Dissatisfied
-Sick*/
-               if(_emotion == 'sadness')
+             function get_icon_class(emotion)
+              {
+                  if(emotion == 'sadness')
                {
                 icon = 'sentiment_dissatisfied'
-                    class_emo = 'principal'
+                class_emo = 'principal'
                }
                     
-               if(_emotion == 'joy')
+               if(emotion == 'joy')
                {
                 icon = 'sentiment_satisfied_alt'
-                    class_emo = 'success'
+                class_emo = 'success'
                }
                     
-               if(_emotion == 'fear')
+               if(emotion == 'fear')
                {
                  icon = 'mood_bad'
                  class_emo = 'warning'
 
                }
                     
-               if(_emotion == 'anger')
+               if(emotion == 'anger')
                {
                 icon = 'sick'
                 class_emo = 'danger'
 
-               }
-               part.innerHTML = ' \
+               } 
+               return [class_emo,icon]
+              }
+               
+               lg_info = get_icon_class(_emotion_lg)
+               rf_info = get_icon_class(_emotion_rf)
+               mlp_info = get_icon_class(_emotion_mlp)
+
+               lg_pred = document.getElementById('results_lg')
+               rf_pred = document.getElementById('results_rf')
+               mlp_pred = document.getElementById('results_mlp')
+
+               lg_pred.innerHTML = ' \
                 <div class="card card-stats"> \
-                  <div class="card-header card-header-'+class_emo+ ' card-header-icon"> \
+                  <div class="card-header card-header-'+lg_info[0]+ ' card-header-icon"> \
                     <div class="card-icon"> \
-                      <i id="icon-emo" class="material-icons">'+ icon+'</i> </div> \
-                    <p class="card-category"></p> \
-                    <h3 class="card-title">'+_emotion+'</h3> \
+                      <i id="icon-emo" class="material-icons">'+ lg_info[1]+'</i> </div> \
+                    <p class="card-category"> Logistic </p> \
+                    <h3 class="card-title">'+_emotion_lg+'</h3> \
                   </div> \
                   <div class="card-footer"> \
                     <div class="stats"> \
                     </div> \
                   </div> \
                 </div> '
+
+
+
+                 rf_pred.innerHTML = ' \
+                <div class="card card-stats"> \
+                  <div class="card-header card-header-'+rf_info[0]+ ' card-header-icon"> \
+                    <div class="card-icon"> \
+                      <i id="icon-emo" class="material-icons">'+ rf_info[1]+'</i> </div> \
+                    <p class="card-category"> Random Forest</p> \
+                    <h3 class="card-title">'+_emotion_rf+'</h3> \
+                  </div> \
+                  <div class="card-footer"> \
+                    <div class="stats"> \
+                    </div> \
+                  </div> \
+                </div> '
+
+
+
+                 mlp_pred.innerHTML = ' \
+                <div class="card card-stats"> \
+                  <div class="card-header card-header-'+mlp_info[0]+ ' card-header-icon"> \
+                    <div class="card-icon"> \
+                      <i id="icon-emo" class="material-icons">'+ mlp_info[1]+'</i> </div> \
+                    <p class="card-category"> Multi-layer Perceptron</p> \
+                    <h3 class="card-title">'+_emotion_mlp+'</h3> \
+                  </div> \
+                  <div class="card-footer"> \
+                    <div class="stats"> \
+                    </div> \
+                  </div> \
+                </div> '
+
+
+               
              }
 
              else {

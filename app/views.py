@@ -126,8 +126,15 @@ pipe_bi = Pipeline([("extract", FeatureUnion([("terms", Pipeline([('clean', Clea
 
 cv_RF = pickle.load(open('model_pickles/RandomForestCV.sav', 'rb'))
 cv_MLP= pickle.load(open('model_pickles/MLP.sav', 'rb'))
-#cv_NN= load_model('model_pickles/NN_cv.sav')
 
+import tensorflow as tf
+
+with tf.compat.v1.Session():
+    from keras.models import load_model
+    cv_NN= load_model('model_pickles/NN_cv.sav')
+
+
+print(cv_NN)
 cv_logistic = pickle.load(open('model_pickles/logisticCV.sav', 'rb'))
 encoder = preprocessing.LabelEncoder()
 encoder.classes_ = np.load('model_pickles/classes.npy', allow_pickle = True)
@@ -146,14 +153,27 @@ def get_emotion(request, lyrics):
             print(lyrics)
             transformed_lyrics = pipe_bi.transform(pd.DataFrame.from_dict({"text":[lyrics]}))
 
-            print(transformed_lyrics)
-            y_pred = cv_logistic.predict(transformed_lyrics)
+            y_pred_lg = cv_logistic.predict(transformed_lyrics)
+            
+            y_pred_rf = cv_RF.predict(transformed_lyrics)
 
+            y_pred_mlp = cv_MLP.predict(transformed_lyrics)
+
+           # y_pred_nn = cv_NN.predict(transformed_lyrics)
             err = "no"
-            print(lyrics)
-            emotion = str(encoder.inverse_transform(y_pred)[0])
-            print("Emotion predicted:",emotion)
-            context = { "errors":err,"emotion": emotion}
+            emotion_lg = str(encoder.inverse_transform(y_pred_lg)[0])
+            emotion_rf = str(encoder.inverse_transform(y_pred_rf)[0])
+            emotion_mlp = str(encoder.inverse_transform(y_pred_mlp)[0])
+            with tf.compat.v1.Session():
+                y_pred_nn = cv_NN.predict(transformed_lyrics)
+                #emotion_nn =  str(encoder.inverse_transform(y_pred_nn)[0])
+            print("Emotion predicted LG:",emotion_lg)
+            print("Emotion predicted RF:",emotion_rf)
+            print("Emotion predicted MLP:",emotion_mlp)
+            
+            print("Emotion predicted NN:",emotion_nn)
+
+            context = { "errors":err,"emotion_lg": emotion_lg, 'emotion_rf':emotion_rf, 'emotion_mlp':emotion_mlp }
             return JsonResponse(context)
         else:
             return JsonResponse({'errors':"error"})
