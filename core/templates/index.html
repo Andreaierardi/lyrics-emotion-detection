@@ -46,6 +46,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12" id="results_mlp">
                       </div>  
 
+                        <div class="col-lg-12 col-md-12 col-sm-12" id="results_nn">
+                      </div>  
                     </div>
                     </div>
 
@@ -517,6 +519,8 @@
                console.log(_emotion_rf)
                _emotion_mlp = response["emotion_mlp"]
                console.log(_emotion_mlp)
+              _emotion_nn = response["emotion_nn"]
+               console.log(_emotion_nn)
 
                console.log("OK")
 
@@ -553,10 +557,12 @@
                lg_info = get_icon_class(_emotion_lg)
                rf_info = get_icon_class(_emotion_rf)
                mlp_info = get_icon_class(_emotion_mlp)
+               nn_info = get_icon_class(_emotion_nn)
 
                lg_pred = document.getElementById('results_lg')
                rf_pred = document.getElementById('results_rf')
                mlp_pred = document.getElementById('results_mlp')
+               nn_pred = document.getElementById('results_nn')
 
                lg_pred.innerHTML = ' \
                 <div class="card card-stats"> \
@@ -604,7 +610,19 @@
                   </div> \
                 </div> '
 
-
+                 nn_pred.innerHTML = ' \
+                <div class="card card-stats"> \
+                  <div class="card-header card-header-'+nn_info[0]+ ' card-header-icon"> \
+                    <div class="card-icon"> \
+                      <i id="icon-emo" class="material-icons">'+ nn_info[1]+'</i> </div> \
+                    <p class="card-category"> Neural Networks</p> \
+                    <h3 class="card-title">'+_emotion_nn+'</h3> \
+                  </div> \
+                  <div class="card-footer"> \
+                    <div class="stats"> \
+                    </div> \
+                  </div> \
+                </div> '
                
              }
 
