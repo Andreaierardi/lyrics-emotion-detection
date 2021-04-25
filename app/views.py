@@ -31,9 +31,9 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
 nltk.download('stopwords')
 
-import tensorflow as tf
-with tf.compat.v1.Session():
-        from keras.models import load_model
+#import tensorflow as tf
+#with tf.compat.v1.Session():
+#        from keras.models import load_model
         
 from sklearn.pipeline import Pipeline
 from sklearn.pipeline import FeatureUnion
