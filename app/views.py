@@ -167,7 +167,7 @@ def get_emotion(request, lyrics):
                 cv_NN= load_model('model_pickles/NN_cv.sav')
                 y_pred_nn = cv_NN.predict(transformed_lyrics)
                 emotion_nn = encoder.inverse_transform([np.argmax(y_pred_nn) for i in y_pred_nn])[0]
-                #emotion_nn =  str(encoder.inverse_transform(y_pred_nn)[0])
+
             print("Emotion predicted LG:",emotion_lg)
             print("Emotion predicted RF:",emotion_rf)
             print("Emotion predicted MLP:",emotion_mlp)
