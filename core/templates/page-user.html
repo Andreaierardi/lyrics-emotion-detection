@@ -8,114 +8,121 @@
 {% block content %}
 
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Edit Profile</h4>
-                  <p class="card-category">Complete your profile</p>
+                  <h4 class="card-title">Data Information</h4>
+                  <p class="card-category"></p>
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">UserID (disabled)</label>
-                          <input type="text" class="form-control" disabled value="{{ current_user.id }}">
+                       <div class="card-title">
+                         <h2>Dataset </h2>
+<div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                     
+                      I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
+                 
+                         Recently, emotion detection in text has received attention in the literature on sentiment analysis. Detecting emotions is important for studying human communication in different domains. Music is typically related to emotions, and song lyrics usually express emotions using different laguage styles. The project aims at studying song lyrics under the emotional profile. In particular, the task of the project is threefold:
+<ul>
+  <li>  Create a model to predict emotions in text using available datasets as EmoBank or WASSA-2017 as training sets;  </li>  
+     <li>   Exploit the model to study emotions in song lyrics with the goal of undertanding how and if emotions are correlated with the music genre;  </li>  
+    <li>    Automatically create a playlist based on lyrics given user preferences about music genres and the user current mood.   </li>  
+                       </ul>
+<a class="text-primary" href="http://saifmohammad.com/WebPages/EmotionIntensity-SharedTask.html"> Dataset link </a>
+<br>
+<a class="text-primary" href="https://md-datasets-public-files-prod.s3.eu-west-1.amazonaws.com/036e1862-4d9b-4ea8-b762-7ae3282ba2c3"> Dataset Songs lyrics  </a>
+
+</p>
+ </div>
+                       </div> 
+
+                         <div class="img" style="text-align:center; margin:5em 0em 5em 0em"> 
+
+                         <img src ="/static/assets/img/plot_LG.png" width="80%"  >  <br> 
+<div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                     
+                         Plot for emotion distribution for Logistic predictions
+                             </p>
+
+                                 </div>
+                          <img src ="/static/assets/img/plot_LG2.png" width="80%" > <br> 
+                          <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                     
+                         Plot for emotion distribution and genre for Logistic predictions
+
+ </p>
+
+                                 </div>
+                         </div>
+
+                         <div class="img" style="text-align:center; margin:5em 0em 5em 0em"> 
+
+                         <img src ="/static/assets/img/plot_RF.png" width="80%"  >  <br> 
+    <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                         Plot for emotion distribution for Random Forest predictions
+                         
+ </p>
+
+                                 </div>
+                          <img src ="/static/assets/img/plot_RF2.png" width="80%" > <br> 
+                    <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>        
+                         Plot for emotion distribution and genre for Random Forest predictions
+
+ </p>
+
+                                 </div>
+
+                         </div>
+
+                         <div class="img" style="text-align:center; margin:5em 0em 5em 0em"> 
+
+                         <img src ="/static/assets/img/plot_MLP.png" width="80%"  >  <br> 
+  <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                         Plot for emotion distribution for MLP predictions 
+                          </p>
+
+                                 </div>
+                          <img src ="/static/assets/img/plot_MLP2.png" width="80%" > <br> 
+
+                            <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                         Plot for emotion distribution and genre for MLP predictions
+ </p>
+
+                                 </div>
+
+                         </div>
+
+                         <div class="img" style="text-align:center; margin:5em 0em 5em 0em"> 
+
+                         <img src ="/static/assets/img/plot_NN.png" width="80%" >  <br> 
+
+                            <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                         Plot for emotion distribution for Neural Networks predictions
+                          </p>
+
+                                 </div>
+                          <img src ="/static/assets/img/plot_NN2.png" width="80%" > <br> 
+                          
+                            <div class="tim-typo" style="float:left;padding-left: 15%;padding-right:10em;font-size: medium;" >
+                    <p>
+                         Plot for emotion distribution and genre for Neural Networks predictions
+                          </p>
+
+                                 </div>
                         </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control" value="{{ current_user.username }}">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control" value="{{ current_user.email }}">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>About Me</label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                            <textarea class="form-control" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
+
+                        
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="/static/assets/img/faces/marc.jpg" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category text-gray">
-                    {{ current_user.username }}
-                  </h6>
-                  <h4 class="card-title">
-                    {{ current_user.email }}
-                  </h4>
-                  <p class="card-description">
-                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
-                </div>
-              </div>
-            </div>
+         
           </div>
 
 {% endblock content %}
