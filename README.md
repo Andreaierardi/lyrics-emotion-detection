@@ -1,5 +1,5 @@
 # Text Mining and Sentiment Analysis
-
+Project [Link](https://island.ricerca.di.unimi.it/~alfio/shared/textsent/2020-21/projects.html)
 <div id="write" class=""><p><strong><span>Master Degree in Data Science and Economics</span></strong></p><h3><a name="text-mining-and-sentiment-analysis" class="md-header-anchor"></a></h3><h1><a name="sentiment-analysis-and-opinion-mining" class="md-header-anchor"></a></h1><p>
  
  </a></em></p><h1><a name="ideas-for-final-projects" class="md-header-anchor"></a><span>Ideas for final projects</span></h1><h3><a name="summary" class="md-header-anchor"></a><span>Summary</span></h3><p><span>P1. </span><span>Entailment in language pragmatics</span></p><p><span>P2. </span><span>Discourse markers and coherence relations</span></p><p>
