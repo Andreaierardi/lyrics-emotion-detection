@@ -16,7 +16,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
-
+import sys
 
 import sklearn
 import pickle
@@ -29,10 +29,10 @@ from sklearn.base import TransformerMixin
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
-nltk.download('stopwords')
+#nltk.download('stopwords')
 
-from tensorflow import compat
-from keras.models import load_model
+import tensorflow as tf
+from tensorflow.keras.models import load_model
         
 from sklearn.pipeline import Pipeline, FeatureUnion
 nltk.download('punkt')
