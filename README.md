@@ -6,9 +6,11 @@ Project [Link](https://island.ricerca.di.unimi.it/~alfio/shared/textsent/2020-21
 
 ## The application:
 
+_It requires_ **Python 3.7**
+
 Install the required python libraries:
 ````
-$ pip install -r requirement.txt
+$ pip install -r requirements.txt
 ````
 
 Starting the app:
