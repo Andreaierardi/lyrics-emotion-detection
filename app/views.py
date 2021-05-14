@@ -35,7 +35,7 @@ from nltk.stem import SnowballStemmer
 #from tensorflow.keras.models import load_model
         
 from sklearn.pipeline import Pipeline, FeatureUnion
-#nltk.download('punkt')
+nltk.download('punkt')
 # FeatureUnion combines two or more pipelines or transformers
 # and is very fast!
 from sklearn.feature_extraction.text import TfidfVectorizer
