@@ -31,8 +31,8 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import SnowballStemmer
 #nltk.download('stopwords')
 
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+#import tensorflow as tf
+#from tensorflow.keras.models import load_model
         
 from sklearn.pipeline import Pipeline, FeatureUnion
 nltk.download('punkt')
@@ -136,17 +136,19 @@ def get_emotion(request, lyrics):
             emotion_mlp = str(encoder.inverse_transform(y_pred_mlp)[0])
                
             
-            cv_NN= load_model('model_pickles/NN_cv.sav')
-            y_pred_nn = cv_NN.predict(transformed_lyrics)
-            emotion_nn = encoder.inverse_transform([np.argmax(y_pred_nn) for i in y_pred_nn])[0]
+           # cv_NN= load_model('model_pickles/NN_cv.sav')
+           # y_pred_nn = cv_NN.predict(transformed_lyrics)
+           # emotion_nn = encoder.inverse_transform([np.argmax(y_pred_nn) for i in y_pred_nn])[0]
 
             print("Emotion predicted LG:",emotion_lg)
             print("Emotion predicted RF:",emotion_rf)
             print("Emotion predicted MLP:",emotion_mlp)
             
-            print("Emotion predicted NN:",emotion_nn)
+            #print("Emotion predicted NN:",emotion_nn)
 
-            context = { "errors":err,"emotion_lg": emotion_lg, 'emotion_rf':emotion_rf, 'emotion_mlp':emotion_mlp, 'emotion_nn':emotion_nn}
+            context = { "errors":err,"emotion_lg": emotion_lg, 'emotion_rf':emotion_rf, 'emotion_mlp':emotion_mlp, 
+            'emotion_nn':'Not Avaiable for Heroku App'
+            }
             return JsonResponse(context)
         else:
             return JsonResponse({'errors':"error"})
